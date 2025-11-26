@@ -17,6 +17,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Éducation pour Tous - Bidart</title>
   <style>
+    /* Responsive : adaptation pour les téléphones */
+@media (max-width: 768px) {
+
+  nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .searchbar input {
+    width: 90%;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .calendar {
+    width: 100%;
+  }
+}
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
