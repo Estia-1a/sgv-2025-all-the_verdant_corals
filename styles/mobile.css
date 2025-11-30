@@ -1,0 +1,31 @@
+/* --- STYLE MOBILE (TÉLÉPHONES) --- */
+/* Ces règles s'activent uniquement sur les petits écrans */
+
+nav {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.searchbar input {
+    width: 90%;
+}
+
+.container {
+    flex-direction: column; /* Tout s'empile verticalement */
+    padding: 15px;
+}
+
+.grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 seule colonne */
+}
+
+header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.calendar {
+    width: 100%;
+    box-sizing: border-box;
+}
