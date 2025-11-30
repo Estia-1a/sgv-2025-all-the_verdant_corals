@@ -1,10 +1,14 @@
 /* --- STYLE GÉNÉRAL (PC & TABLETTE) --- */
+/* --- STYLE GÉNÉRAL (PC & TABLETTE) --- */
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
     color: #333;
+    background-color: #f4f4f4; /* Le gris clair propre */
+    /* On a supprimé toutes les lignes d'images compliquées */
 }
+
 
 /* HEADER */
 header {
@@ -41,20 +45,52 @@ nav a.active {
 
 /* SEARCHBAR */
 /* --- BARRE DE RECHERCHE AMÉLIORÉE --- */
+/* --- BARRE DE RECHERCHE AVEC LOUPE --- */
 .searchbar {
-    display: flex;           /* Active l'alignement côte à côte */
-    justify-content: center; /* Centre tout le groupe au milieu de la page */
-    align-items: center;     /* Centre verticalement (haut/bas) */
-    gap: 20px;               /* Espace entre le texte et la barre */
-    margin: 30px 0;          /* Un peu d'espace en haut et en bas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
 }
 
-.searchbar input {
-    padding: 10px 15px;
-    width: 300px;
-    border-radius: 20px;
+/* Le conteneur qui fait "pilule" */
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background: white;
     border: 1px solid #aaa;
-    outline: none;
+    border-radius: 20px;
+    padding: 5px 15px; /* Espace autour du texte et de la loupe */
+    width: 300px;
+}
+
+/* L'input devient transparent pour se fondre dedans */
+.search-wrapper input {
+    border: none;       /* On enlève la bordure grise moche */
+    outline: none;      /* On enlève le trait bleu au clic */
+    width: 100%;        /* Prend toute la place dispo */
+    font-size: 1rem;
+}
+
+/* La petite loupe */
+.search-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;       /* Un peu gris pour faire discret */
+    cursor: pointer;
+}
+
+/* Le texte "Dernier cours" (on garde comme avant) */
+.last-course-info {
+    font-size: 0.95rem;
+    color: #555;
+}
+.last-course-info a {
+    color: #3a7bd5;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 /* Style du texte "Dernier cours..." */
@@ -90,12 +126,32 @@ nav a.active {
 }
 
 /* CARTES (CARDS) */
+/* --- CARTES Cliquables --- */
 .card {
     background: white;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.2s;
+    
+    /* 👇 IMPORTANT : Ça définit la zone de référence pour le lien */
+    position: relative; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    cursor: pointer; /* Affiche la petite main partout sur la carte */
+}
+
+/* 👇 L'ASTUCE MAGIQUE 👇 */
+/* Cela crée un calque invisible par-dessus toute la carte qui est lié au lien */
+.card a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 .card:hover {
     transform: translateY(-5px);
