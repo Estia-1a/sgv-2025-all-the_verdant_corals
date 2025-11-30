@@ -40,15 +40,37 @@ nav a.active {
 }
 
 /* SEARCHBAR */
+/* --- BARRE DE RECHERCHE AMÉLIORÉE --- */
 .searchbar {
-    text-align: center;
-    margin: 20px 0;
+    display: flex;           /* Active l'alignement côte à côte */
+    justify-content: center; /* Centre tout le groupe au milieu de la page */
+    align-items: center;     /* Centre verticalement (haut/bas) */
+    gap: 20px;               /* Espace entre le texte et la barre */
+    margin: 30px 0;          /* Un peu d'espace en haut et en bas */
 }
+
 .searchbar input {
-    padding: 10px;
+    padding: 10px 15px;
     width: 300px;
     border-radius: 20px;
     border: 1px solid #aaa;
+    outline: none;
+}
+
+/* Style du texte "Dernier cours..." */
+.last-course-info {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.last-course-info a {
+    color: #3a7bd5;      /* La couleur bleue de ton thème */
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.last-course-info a:hover {
+    text-decoration: underline;
 }
 
 /* STRUCTURE DE LA PAGE */
