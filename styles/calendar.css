@@ -1,0 +1,50 @@
+/* --- Nouveau style du calendrier --- */
+    .calendar-header {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .calendar-week-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      font-weight: bold;
+      color: #777;
+      font-size: 0.8rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      text-align: center;
+    }
+
+    .day {
+      padding: 8px 0;
+      font-size: 0.9rem;
+      border-radius: 50%; /* Cercle autour du chiffre */
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .day:hover {
+      background-color: #eee;
+    }
+
+    /* Style pour le jour actuel */
+    .day.today {
+      background-color: #3a7bd5;
+      color: white;
+      font-weight: bold;
+    }
+    
+    /* Style pour les jours passés ou vides */
+    .day.empty {
+      pointer-events: none;
+    }
