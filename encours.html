@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page en construction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Prend toute la hauteur de l'écran */
+            display: flex;
+            justify-content: center; /* Centre horizontalement */
+            align-items: center; /* Centre verticalement */
+            background-color: #fceabb; /* Un fond jaune pâle style "chantier" */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .message-box {
+            padding: 20px;
+            border: 3px dashed #333; /* Bordure en pointillés style chantier */
+            border-radius: 10px;
+            background: #fff;
+            max-width: 90%; /* S'assure que ça ne dépasse pas sur mobile */
+        }
+
+        h1 {
+            color: #d35400;
+            font-size: 2.5rem; /* Gros texte */
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Adaptation spécifique pour les téléphones */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem; /* Texte un peu plus petit sur mobile */
+            }
+        }
+        
+        .btn-retour {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-box">
+        <div style="font-size: 50px;">🚧</div>
+        <h1>En cours de construction</h1>
+        <p>Cette page n'est pas encore disponible.</p>
+        <a href="javascript:history.back()" class="btn-retour">Retour</a>
+    </div>
+
+</body>
+</html>
