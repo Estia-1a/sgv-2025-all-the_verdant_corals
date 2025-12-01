@@ -3,60 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plateforme Éducative Pour Tous - Science & Technologie</title>
+    <title>Suivre ma Progression - Éducation pour Tous</title>
+
+    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)"> 
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)"> 
+    <link rel="stylesheet" href="styles/calendar.css"> 
+    
     <style>
-        /* CSS de base pour un affichage minimal */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #3c3c93;
-            color: #333;
+        /* Réutilisation des styles de la page d'accueil */
+        @media (max-width: 768px) {
+            nav { flex-wrap: wrap; gap: 10px; }
+            .searchbar input { width: 90%; }
+            .container { flex-direction: column; padding: 15px; }
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            .calendar { width: 100%; }
+            .stats-summary { flex-direction: column; } /* Stacks stats on mobile */
+            .performance-charts { flex-direction: column; } /* Stacks charts on mobile */
+            .chart-container { flex: 1 1 100%; }
         }
-        header {
-            background-color: #007bff; /* Bleu Moodle-like */
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+
+        body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f4; }
+        header { background: #fff; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #ddd; }
+        nav { display: flex; gap: 20px; margin-top: 20px; justify-content: center; }
+        nav a { padding: 10px 20px; background: #e5e5e5; text-decoration: none; color: #000; border-radius: 5px; }
+        nav a.active { background: #3a7bd5; color: #fff; } /* Couleur d'accent */
+        .container { display: flex; padding: 30px; gap: 30px; }
+        .calendar { flex: 1; background: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .searchbar { text-align: center; margin: 20px 0; }
+        .searchbar input { padding: 10px; width: 300px; border-radius: 20px; border: 1px solid #aaa; }
+        
+        /* Styles Spécifiques à la page de Progression */
+        .progression-content {
+            flex: 3;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
         }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .container {
-            width: 90%;
-            margin: 20px auto;
-        }
-        .hero {
-            background-color: #e9ecef;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-        .course-grid {
+        .stats-summary {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .course-card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            justify-content: space-between;
+            background: white;
             padding: 20px;
-            margin: 10px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
             text-align: center;
-            transition: transform 0.3
+        }
+        .stat-box { flex: 1; padding: 10px; border-right: 1px solid #eee; }
+        .stat-box:last-child { border-right: none; }
+        .stat-box .value { display: block; font-size: 2em; font-weight: bold; color: #3a7bd5; }
+        .stat-box .label { font-size: 0.9em; color: #666; }
+
+        /* Styles de la Liste de Progression (Barres) */
+        .progress-list { background: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .progress-item { margin-bottom: 15px; }
+        .progress-item-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 5px; }
+        .progress-bar-container { width: 100%; height: 10px; background: #e5e5e5; border-radius: 5px; }
+        .progress-bar { height: 100%; background: #28a745; border-radius: 5px; } /* Vert pour la progression */
+
+        /* Styles des Courbes (Chart Containers) */
+        .performance-charts {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            display: flex; 
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .performance-charts h3 { width: 100%; margin-bottom: 15px; color: #3a7bd5; }
+        .chart-container {
+            flex: 1 1 45%; 
+            min-width: 300px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .chart-container h4 { text-align: center; font-size: 1.1em; color: #333; margin-top: 0; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Logo Éducation" class="logo" style="height: 50px; width: auto;">
+        <h1>Éducation pour Tous - Bidart</h1>
+        <div class="compte">Mon compte</div>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="#" class="active">Suivre ma Progression</a>
+        <a href="#">Personnaliser</a>
+        <a href="#">Chat</a>
+        <a href="#">Abonnement</a>
+    </nav>
+
+    <div class="searchbar">
+        <input type="text" placeholder="Rechercher un cours...">
+    </div>
+
+    <div class="container">
+        
+        <div class="progression-content">
+            <h2>Vue d'ensemble de mon apprentissage</h2>
+
+            <div class="stats-summary">
+                <div class="stat-box">
+                    <span class="value">9h</span>
+                    <span class="label">Temps total d'étude / Semaine</span>
+                </div>
+                <div class="stat-box">
+                    <span class="value">75%</span>
+                    <span class="label">Moyenne de complétion des modules</span>
+                </div>
+                <div class="stat-box">
+                    <span class="value">3</span>
+                    <span class="label">Modules à revoir</span>
+                </div>
+            </div>
+
+            <div class="performance-charts">
+                <h3>Historique de Performance</h3>
+
+                <div class="chart-container">
+                    <h4>Courbe de Notes (Moyenne Générale)</h4>
+                    <canvas id="moyenne-generale-chart"></canvas> 
+                    
+                </div>
+
+                <div class="chart-container">
+                    <h4>Suivi de la Vitesse de Progression</h4>
+                    <canvas id="vitesse-progression-chart"></canvas>
+                    
+                </div>
+                
+                <div class="chart-container">
+                    <h4>Comparaison des Notes (Maths vs. Physique)</h4>
+                    <canvas id="comparaison-notes-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="progress-list">
+                <h3>Progression par Matière</h3>
+
+                <div class="progress-item">
+                    <div class="progress-item-header">
+                        <span>Mathématiques</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-item-header">
+                        <span>Anglais</span>
+                        <span>20%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 20%;"></div>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+        <div class="calendar">
+            <h3>Calendrier</h3>
+            <p>Novembre 2025</p>
+            <p>(exemple statique)</p>
+        </div>
+    </div>
+    
+    </body>
+</html>
