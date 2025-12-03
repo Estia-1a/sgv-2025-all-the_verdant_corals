@@ -1,10 +1,10 @@
-<!-- Intégration finale HTML + CSS pour la page "Suivre ma progression" -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suivre ma progression</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     body {
@@ -14,7 +14,6 @@
       color: #333;
     }
 
-    /* HEADER */
     header {
       background: #fff;
       padding: 15px 30px;
@@ -24,7 +23,6 @@
       border-bottom: 2px solid #ddd;
     }
 
-    /* NAV */
     nav {
       display: flex;
       justify-content: center;
@@ -41,16 +39,15 @@
       transition: 0.3s;
     }
 
+    nav a.active {
+      background: #3a7bd5;
+      color: white;
+    }
+
     nav a:hover {
       background: #d1d1d1;
     }
 
-    nav a.active {
-      background: #3a7bd5;
-      color: #fff;
-    }
-
-    /* BARRE DE RECHERCHE */
     .searchbar {
       display: flex;
       justify-content: center;
@@ -76,20 +73,6 @@
       font-size: 1rem;
     }
 
-    .search-icon {
-      width: 20px;
-      height: 20px;
-      opacity: 0.6;
-      cursor: pointer;
-    }
-
-    .last-course-info a {
-      color: #3a7bd5;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* CONTAINER */
     .container {
       display: flex;
       padding: 30px;
@@ -110,7 +93,6 @@
       padding: 10px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: relative;
       transition: 0.2s;
     }
 
@@ -139,15 +121,6 @@
       background: #3a7bd5;
     }
 
-    .card a {
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-      display: block;
-      margin-top: 10px;
-    }
-
-    /* CALENDRIER */
     .calendar {
       flex: 1;
       background: white;
@@ -161,7 +134,6 @@
       text-align: center;
       font-weight: bold;
       margin-bottom: 15px;
-      color: #444;
       text-transform: uppercase;
     }
 
@@ -169,15 +141,14 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       font-weight: bold;
-      color: #777;
-      font-size: 0.8rem;
       text-align: center;
       margin-bottom: 10px;
+      color: #555;
     }
 
     .calendar-days {
       display: grid;
-      grid-template-columns: repeat(7,1fr);
+      grid-template-columns: repeat(7, 1fr);
       gap: 5px;
     }
 
@@ -185,7 +156,7 @@
       padding: 8px 0;
       border-radius: 50%;
       transition: 0.2s;
-      font-size: 0.9rem;
+      text-align: center;
     }
 
     .day:hover {
@@ -199,47 +170,34 @@
       font-weight: bold;
     }
 
-    .day.empty {
-      pointer-events: none;
-      opacity: 0.4;
+    /* ----- GRAPHIQUE ----- */
+    .graph-container {
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 900px;
     }
 
-    /* RESPONSIVE MOBILE */
     @media (max-width: 767px) {
-      nav {
-        flex-wrap: wrap;
-      }
-
-      .searchbar {
-        flex-direction: column;
-      }
-
       .container {
         flex-direction: column;
-        padding: 15px;
       }
-
       .grid {
         grid-template-columns: 1fr;
       }
-
-      header {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .calendar {
-        width: 100%;
-      }
+      nav { flex-wrap: wrap; }
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" style="height:50px" />
   <h1>Suivre ma progression</h1>
-  <div class="compte" style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+  <div style="display:flex;align-items:center;gap:10px;cursor:pointer;">
     <span>Mon compte</span>
     <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" style="height:30px" />
   </div>
@@ -247,25 +205,21 @@
 
 <nav>
   <a href="#">Accueil</a>
-  <a href="#" class="active">Suivre ma progression</a>
+  <a class="active" href="#">Suivre ma progression</a>
   <a href="#">Cours</a>
   <a href="#">Chat</a>
   <a href="#">Abonnement</a>
 </nav>
 
-<div class="searchbar">
-  <div class="last-course-info">
-    <strong>Dernier cours :</strong> <a href="#">Mathématiques</a>
-  </div>
-  <div class="search-wrapper">
-    <input type="text" placeholder="Rechercher un cours..." />
-    <img class="search-icon" src="https://cdn-icons-png.flaticon.com/512/622/622669.png" />
-  </div>
+<!-- Graphique -->
+<div class="graph-container">
+  <h2 style="text-align:center;">Évolution de mes notes</h2>
+  <canvas id="notesChart"></canvas>
 </div>
 
+<!-- Carte + calendrier -->
 <div class="container">
   <div class="grid">
-    <!-- Exemple carte -->
     <div class="card">
       <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb" />
       <div class="progress"><div class="fill" style="width:60%"></div></div>
@@ -297,6 +251,39 @@
     </div>
   </div>
 </div>
+
+<!-- SCRIPT CHART -->
+<script>
+  const ctx = document.getElementById('notesChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [
+        "Semaine 1", "Semaine 2", "Semaine 3",
+        "Semaine 4", "Semaine 5", "Semaine 6"
+      ],
+      datasets: [{
+        label: "Progression des notes",
+        data: [11, 12, 13, 14, 15, 17], 
+        tension: 0.3,
+        borderColor: "#3a7bd5",
+        backgroundColor: "rgba(58,123,213,0.2)",
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: "#3a7bd5"
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          min: 0,
+          max: 20,
+        }
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
