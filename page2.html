@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suivre ma progression</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/desktop.css">
+
+</head>
+
+<body>
+
+<header>
+  <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" style="height:50px" />
+  <h1>Suivre ma progression</h1>
+  <div style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+    <span>Mon compte</span>
+    <a href="Panier.html">Panier(3)</a>
+    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" style="height:30px" />
+  </div>
+</header>
+
+<nav>
+  <a href="#">Accueil</a>
+  <a href="index.html">Accéder aux cours</a>
+  <a href="#"class="active">Suivre ma progression</a>
+  <a href="#">Personnaliser</a>
+  <a href="#">Chat</a>
+  <a href="#">Abonnement</a>
+</nav>
+
+<!-- Graphique -->
+<div class="graph-container">
+  <h2 style="text-align:center;">Évolution de mes notes</h2>
+  <canvas id="notesChart"></canvas>
+</div>
+
+<!-- Carte + calendrier -->
+<div class="container">
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb" />
+      <div class="progress"><div class="fill" style="width:60%"></div></div>
+      <a href="#">Mathématiques</a>
+    </div>
+  </div>
+
+  <div class="calendar">
+    <div class="calendar-header">Novembre 2025</div>
+
+    <div class="calendar-week-days">
+      <div>Lun</div><div>Mar</div><div>Mer</div><div>Jeu</div><div>Ven</div><div>Sam</div><div>Dim</div>
+    </div>
+
+    <div class="calendar-days">
+  <!-- Cases vides avant le 1er jour du mois -->
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+
+  <!-- Jours du mois -->
+  <div class="day">1</div>
+  <div class="day">2</div>
+  <div class="day">3</div>
+  <div class="day today">4</div>
+  <div class="day">5</div>
+  <div class="day">6</div>
+  <div class="day">7</div>
+  <div class="day">8</div>
+  <div class="day">9</div>
+  <div class="day">10</div>
+  <div class="day">11</div>
+  <div class="day">12</div>
+  <div class="day">13</div>
+  <div class="day">14</div>
+  <div class="day">15</div>
+  <div class="day">16</div>
+  <div class="day">17</div>
+  <div class="day">18</div>
+  <div class="day">19</div>
+  <div class="day">20</div>
+  <div class="day">21</div>
+  <div class="day">22</div>
+  <div class="day">23</div>
+  <div class="day">24</div>
+  <div class="day">25</div>
+  <div class="day">26</div>
+  <div class="day">27</div>
+  <div class="day">28</div>
+  <div class="day">29</div>
+  <div class="day">30</div>
+</div>
+
+  </div>
+</div>
+
+<!-- SCRIPT CHART -->
+<script>
+  const ctx = document.getElementById('notesChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [
+        "Semaine 1", "Semaine 2", "Semaine 3",
+        "Semaine 4", "Semaine 5", "Semaine 6"
+      ],
+      datasets: [{
+        label: "Progression des notes",
+        data: [11, 12, 13, 14, 15, 17], 
+        tension: 0.3,
+        borderColor: "#3a7bd5",
+        backgroundColor: "rgba(58,123,213,0.2)",
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: "#3a7bd5"
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          min: 0,
+          max: 20,
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

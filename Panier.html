@@ -1,0 +1,179 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier(3)</title>
+
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/mobile.css" media="screen and (max-width: 767px)">
+</head>
+
+<body>
+
+<header>
+  <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" style="height:50px;">
+  <h1>Panier(3)</h1>
+
+  <div class="compte" style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+    <span>Mon compte</span>
+    <a href="Panier.html">Panier(3)</a>
+    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" style="height:30px;">
+  </div>
+</header>
+
+<nav>
+  <a href="encours.html">Accueil</a>
+  <a href="index.html">Accéder aux cours</a>
+  <a href="page2.html">Suivre ma progression</a>
+  <a href="encours.html">Personnaliser</a>
+  <a href="encours.html">Chat</a>
+  <a href="encours.html" class="active">Abonnement</a>
+</nav>
+
+<h2 style="text-align:center; margin-top: 40px;">Panier – Cours Premium</h2>
+
+<div style="
+  display:flex;
+  max-width:1300px;
+  margin:40px auto;
+  gap:30px;
+">
+
+  <div style="flex:3; display:flex; flex-direction:column; gap:25px;">
+
+    <div class="card" style="
+      display:flex; gap:20px; padding:20px; background:white;
+      border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    ">
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400"
+           style="height:120px; width:120px; border-radius:8px; object-fit:cover;">
+
+      <div style="flex:1;">
+        <h3>Mathématiques – Premium</h3>
+        <p>Accède aux cours avancés, vidéos exclusives et exercices corrigés.</p>
+
+        <a href="infos-maths.html" style="color:#3a7bd5;">+ d’infos</a>
+
+        <div style="margin-top:10px;">
+          <label>Quantité :</label>
+          <select style="padding:5px 10px; border-radius:5px;">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </div>
+      </div>
+
+      <strong style="font-size:1.3rem;">14,99 €</strong>
+    </div>
+
+    <div class="card" style="
+      display:flex; gap:20px; padding:20px; background:white;
+      border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    ">
+      <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=400"
+           style="height:120px; width:120px; border-radius:8px; object-fit:cover;">
+
+      <div style="flex:1;">
+        <h3>Surf & Océan – Flex</h3>
+        <p>Analyse des vagues, sécurité, techniques avancées et vidéos pro.</p>
+
+        <a href="infos-surf.html" style="color:#3a7bd5;">+ d’infos</a>
+
+        <div style="margin-top:10px;">
+          <label>Quantité :</label>
+          <select style="padding:5px 10px; border-radius:5px;">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </div>
+      </div>
+
+      <strong style="font-size:1.3rem;">19,99 €</strong>
+    </div>
+
+    <!-- ======= CARTE 3 : EUSKARA ======= -->
+    <div class="card" style="
+      display:flex; gap:20px; padding:20px; background:white;
+      border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    ">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/640px-Flag_of_the_Basque_Country.svg.png"
+           style="height:120px; width:120px; border-radius:8px; object-fit:cover;">
+
+      <div style="flex:1;">
+        <h3>Euskara – Premium</h3>
+        <p>Conversations, vocabulaire, exercices et pratiques immersives.</p>
+
+        <a href="infos-basque.html" style="color:#3a7bd5;">+ d’infos</a>
+
+        <div style="margin-top:10px;">
+          <label>Quantité :</label>
+          <select style="padding:5px 10px; border-radius:5px;">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </div>
+      </div>
+
+      <strong style="font-size:1.3rem;">29,99 €</strong>
+    </div>
+
+    <!-- ===================== SUGGESTIONS ===================== -->
+    <div style="margin-top:30px;">
+      <h3>Suggestions</h3>
+
+      <div style="display:flex; gap:20px; margin-top:15px;">
+
+        <div style="flex:1; background:white; padding:15px; border-radius:8px;
+          box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center;">
+          <h4>Chimie – Premium</h4>
+          <p>Idéal pour compléter les sciences.</p>
+        </div>
+
+        <div style="flex:1; background:white; padding:15px; border-radius:8px;
+          box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center;">
+          <h4>Philosophie – Premium</h4>
+          <p>Analyse et culture générale.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div style="
+    flex:1;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    height: fit-content;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    position:sticky;
+    top:20px;
+  ">
+    <h3>Récapitulatif</h3>
+
+    <div style="margin:20px 0;">
+      <p style="font-size:1.1rem;"><strong>Total :</strong></p>
+      <p style="font-size:2rem; font-weight:bold; color:#3a7bd5;">605 €</p>
+    </div>
+
+    <button style="
+      width:100%;
+      padding:15px;
+      background:#3a7bd5;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1.2rem;
+    ">Passer au paiement</button>
+  </div>
+
+</div>
+
+</body>
+</html>
